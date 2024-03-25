@@ -110,50 +110,7 @@ MERGE INTO FactRealSection as TT
 						, ST.DelayAmount
 						, ST.CongestionLevel
 					);
-								
 
---update Metro.dbo.Train
---set SeatingCapacity = 10000, StandingCapacity = 10000
---where TrainId = 459
---select * from Metro.dbo.Train
-
---select * from metro.dbo.RealSection
-
---set identity_insert Metro.dbo.RealSection ON;
---go
---insert into Metro.dbo.RealSection
---values
---	(14546,17071, '2022-01-05 00:00:00',459,null,1066)
-
---select * From FactRealSection
---join DimTrain on TrainIdBk = TrainId
---where TrainId = 0
-
-
---select count(*) from vETLFRealSection
---select count(*) from FactRealSection
---order by TrainId,TimeId,DateId ASC
---select * from aux_amount
---order by RealSectionId DESC
---select * from vETLFRealSection
---where TrainId is null
---select * from DimTrain
---where TrainIdBk = 309
---select * from DimRide
---where TrainIdBk = 0
---select * from vETLFRealSection
---order by TrainId DESC
---select * from Metro.dbo.RealSection
---where RideId = 111
---select * from DimDate
---select * from FactRealSection
---order by DelayAmount desc
---select * from DimDate
-
---order by DelayAmount desc
---select * from DimEvent
---select * from DimStation
---select avg (CongestionLevel) from FactRealSection
 
 
 
