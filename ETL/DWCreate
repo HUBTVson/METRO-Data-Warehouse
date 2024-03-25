@@ -1,0 +1,75 @@
+use master;
+go
+
+alter database [ETL_Trains] set single_user with rollback immediate;
+drop database ETL_Trains;
+
+create database ETL_Trains;
+ALTER DATABASE ETL_Trains 
+SET MULTI_USER;
+
+use ETL_Trains
+go
+
+create table DimRide (
+	RideId int primary key,
+	TrainId int
+);
+
+create table DimTrain (
+	TrainIdSk int primary key identity(0,1),
+	TrainIdBk int,
+	TrainInsertionTime smalldatetime,
+	TrainDeactivationTime smalldatetime,
+	TrainIsActive bit,
+	SeatingCapacity int,
+	StandingCapacity int
+);
+
+create table DimEvent (
+	EventId int primary key,
+	EventType char(256)
+);
+
+create table DimStation (
+	StationId int primary key,
+	StationName char(256)
+);
+
+create table DimTime (
+	TimeId int primary key,
+	TimeHour int,
+	TimeMinute int,
+	TimeSecond int
+);
+
+create table DimDate (
+	DateId int primary key,
+	DateYear int,
+	DateMonth int,
+	DateDay int,
+	DateDayOfWeek int,
+	DateIsBusinessDay bit,
+	DateSeason char(16)
+);
+
+create table FactRealSection (
+	RealSectionId int identity (0,1),
+	TrainId int foreign key references DimTrain,
+	TimeId int foreign key references "DimTime",
+	DateId int foreign key references "DimDate",
+	EventId int foreign key references "DimEvent",
+	RideId int foreign key references DimRide,
+	StartStationId int foreign key references DimStation,
+	EndStationId int foreign key references DimStation,
+	AmountOfPassengers int,
+	DelayAmount int,
+	CongestionLevel int,
+	primary key (TrainId,TimeId,DateId,EventId,RideId,StartStationId,EndStationId)
+);
+
+create table aux (
+	id int primary key
+	);
+
+--	select count(*) from FactRealSection
