@@ -11,5 +11,8 @@ and increase the number of users of monthly passes by 5%.
   -  [Data Warehouse](https://github.com/HUBTVson/METRO-Data-Warehouse/blob/main/ETL/DWCreate) 
   -  [ETL process](https://github.com/HUBTVson/METRO-Data-Warehouse/tree/main/ETL) written in T-SQL
   -  [Data](https://github.com/HUBTVson/METRO-Data-Warehouse/tree/main/Data) generated in Python
-  -  [Visual Studio project](https://github.com/HUBTVson/METRO-Data-Warehouse/tree/main/METRO_ETL)      Cube with hierarchies
+  -  [Visual Studio project](https://github.com/HUBTVson/METRO-Data-Warehouse/tree/main/METRO_ETL)  Cube with hierarchies
   -  Project [Documentation](https://github.com/HUBTVson/METRO-Data-Warehouse/tree/main/project_report) and DW [optimization report](https://github.com/HUBTVson/METRO-Data-Warehouse/blob/main/project_report/Optimization.pdf)
+
+## Database design
+![image](https://github.com/HUBTVson/METRO-Data-Warehouse/assets/120310542/73d7ca8d-da2c-4dac-a86c-5a682a11f452)
