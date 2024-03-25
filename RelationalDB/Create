@@ -1,0 +1,57 @@
+use master;
+alter database Metro set single_user with rollback immediate;
+drop database Metro;
+create database Metro;
+alter database Metro set multi_user;
+use Metro
+
+create table Train (
+	TrainId int primary key identity (0,1),
+	SeatingCapacity int,
+	StandingCapacity int
+);
+
+create table "Event" (
+	EventId int primary key identity (0,1),
+	EventType char(256)
+);
+
+create table Station (
+	StationId int primary key,
+	StationName char(256)
+);
+
+create table ScheduledSection 
+(
+	ScheduledSectionId int identity(0,1) primary key,
+	StartStationId int foreign key references Station not null,
+	EndStationId int foreign key references Station not null,
+	ArrivalTime smalldatetime not null
+);
+
+create table Ride
+(
+	RideId int identity(0,1) primary key,
+	TrainId int foreign key references Train
+)
+
+create table RealSection
+(
+	RealSectionId int identity(0,1) primary key,
+	ScheduledSectionId int foreign key references ScheduledSection not null,
+	RealArrivalTime smalldatetime not null,
+	TrainId int foreign key references Train not null,
+	EventId int foreign key references "Event",
+	RideId int foreign key references Ride not null
+);
+
+create table PassengerRide
+(
+	PassengerRideId int identity(0,1) primary key,
+	EntryStationId int foreign key references Station not null,
+	ExitStationId int foreign key references Station not null,
+	EntryTime smalldatetime not null,
+	ExitTime smalldatetime not null,
+	TrainId int foreign key references Train not null,
+	RideId int foreign key references Ride not null
+);
