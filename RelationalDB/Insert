@@ -1,0 +1,86 @@
+use Metro;
+
+bulk insert Station
+from 'C:\Users\janic\Desktop\sql\data\stations.csv'
+with (fieldterminator = ',');
+
+SET IDENTITY_INSERT "Event" ON;
+DECLARE @events TABLE (EventType char(256));
+INSERT INTO @events (EventType) VALUES 
+('track maintenance'),
+('signal failure'),
+('emergency stop'),
+('power outage'),
+('passenger disturbance'),
+('fire alarm'),
+('police intervention'),
+('door malfunction'),
+('train congestion'),
+('track obstruction'),
+('accident'),
+('medical emergency'),
+('evacuation'),
+('train breakdown'),
+('switch failure'),
+('overcrowding'),
+('weather delay'),
+('signal delay'),
+('construction'),
+('communication issue'),
+('water leak'),
+('track defect'),
+('equipment failure'),
+('passenger injury'),
+('security issue'),
+('passenger illness'),
+('smoke in tunnel'),
+('vehicle on track'),
+('trespasser'),
+('animal on track'),
+('sick passenger'),
+('derailment'),
+('collision'),
+('suicide'),
+('train evacuation'),
+('passenger assistance'),
+('lost item'),
+('false alarm'),
+('power surge'),
+('flooding'),
+('medical issue'),
+('late train'),
+('cancelled train'),
+('diverted train'),
+('overhead wire issue'),
+('broken rail'),
+('unauthorized person'),
+('chemical spill'),
+('biohazard'),
+('dangerous goods'),
+('security breach'),
+('suspicious package');
+
+INSERT INTO "Event" (EventId, EventType)
+SELECT ROW_NUMBER() OVER (ORDER BY EventType), EventType
+FROM @events;
+SET IDENTITY_INSERT "Event" OFF;
+
+bulk insert Train
+from 'C:\Users\janic\Desktop\sql\data\trains1.csv'
+with (fieldterminator = ',');
+
+bulk insert ScheduledSection
+from 'C:\Users\janic\Desktop\sql\data\scheduled_sections1.csv'
+with (fieldterminator = ',');
+
+bulk insert Ride
+from 'C:\Users\janic\Desktop\sql\data\rides1.csv'
+with (fieldterminator = ',');
+
+bulk insert RealSection
+from 'C:\Users\janic\Desktop\sql\data\real_sections1.csv'
+with (fieldterminator = ',');
+
+bulk insert PassengerRide
+from 'C:\Users\janic\Desktop\sql\data\passanger_rides1.csv'
+with (fieldterminator = ',');
