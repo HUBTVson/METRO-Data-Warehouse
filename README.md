@@ -16,6 +16,5 @@ and increase the number of users of monthly passes by 5%.
 
 ## Database design
 ![image](https://github.com/HUBTVson/METRO-Data-Warehouse/assets/120310542/73d7ca8d-da2c-4dac-a86c-5a682a11f452)
-## Datawarehouse design
-![image](https://github.com/HUBTVson/METRO-Data-Warehouse/assets/120310542/60d58f2d-1412-4ecf-8146-6c819e86d2a0)
+
 
